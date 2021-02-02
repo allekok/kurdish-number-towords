@@ -1,0 +1,104 @@
+<html dir="rtl" lang="ckb">
+	<head>
+		<title>گۆڕینی ژمارە بۆ وشە</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<style>
+		 @font-face {
+			 font-family:"nesx";
+			 font-display:swap;
+			 src:url("//allekok.github.io/src/frontend/style/DroidNaskh-Regular.woff2") format("woff2");
+		 }
+		 a {
+			 color:#00E;
+			 text-decoration:none;
+		 }
+		 body {
+			 margin:0;
+			 font-family:"nesx";
+			 text-align:center;
+		 }
+		 header {
+			 padding:.5em 0;
+		 }
+		 input {
+			 font-family:inherit;
+			 font-size:1.5em;
+			 -webkit-appearance:none;
+			 border:0;
+			 border-bottom:2px solid #00E;
+			 border-top:2px solid #00E;
+			 box-shadow:0 10px 10px -12px #000;
+			 border-radius:0;
+			 padding:.5em 1em;
+			 width:100%;
+			 display:block;
+			 direction:ltr;
+			 text-align:center;
+		 }
+		 input:focus {
+			 outline:0;
+			 border-bottom-color:#000;
+			 border-top-color:#000;
+		 }
+		 #result {
+			 font-size:1.1em;
+			 padding:.5em;
+		 }
+		 footer {
+			 padding:1em 0;
+			 font-size:1.1em;
+		 }
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>
+				گۆڕینی ژمارە بۆ وشە
+			</h1>
+		</header>
+		<main>
+			<input type="text" id="number" placeholder="ژمارە">
+			<div id="result"></div>
+		</main>
+		<footer>
+			<a href="https://github.com/allekok/kurdish-number-towords">کۆد</a>
+			/
+			<a href="https://allekok.github.io/">بەرنامەکانی ئاڵەکۆک</a>
+		</footer>
+		
+		<script src="kurdish-number-to-words.js" defer></script>
+	</body>
+	<script>
+	 /* Globals */
+	 const number = document.querySelector("#number")
+	 const result = document.querySelector("#result")
+
+	 /* Events */
+	 number.addEventListener("keyup", () => {
+		 const n = sanitizing(number.value)
+		 result.innerHTML = kurdish_number_to_words(n)
+	 })
+
+	 /* Functions */
+	 function convertNums(str, f, t) {
+		 const assoc = {
+			 en: ["0","1","2","3","4","5","6","7","8","9"],
+			 fa: ["۰","۱","۲","۳","۴","۵","۶","۷","۸","۹"],
+			 ck: ["٠","١","٢","٣","٤","٥","٦","٧","٨","٩"]}
+		 for(const i in assoc.en)
+			 str = str.replace(new RegExp(assoc[f][i],"g"),
+					   assoc[t][i])
+		 return str
+	 }
+	 function toEnNums(str) {
+		 return convertNums(convertNums(str, "fa", "en"), "ck", "en")
+	 }
+	 function sanitizing(str) {
+		 str = str.replace(/\s+/g, "")
+		 str = toEnNums(str)
+		 str = parseInt(str)
+		 return str
+	 }
+	</script>
+</html>
