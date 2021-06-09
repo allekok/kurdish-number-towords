@@ -1,0 +1,3 @@
+[submodule "str-to-num"]
+	path = str-to-num
+	url = https://github.com/allekok/str-to-num
