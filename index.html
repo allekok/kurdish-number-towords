@@ -65,7 +65,7 @@
 			<a href="https://allekok.github.io/">بەرنامەکانی ئاڵەکۆک</a>
 		</footer>
 		
-		<script src="kurdish-number-to-words.js" defer></script>
+		<script src="num_to_str.js" defer></script>
 	</body>
 	<script>
 	 /* Globals */
@@ -75,7 +75,7 @@
 	 /* Events */
 	 number.addEventListener("keyup", () => {
 		 const n = sanitizing(number.value)
-		 result.innerHTML = kurdish_number_to_words(n)
+		 result.innerHTML = num_to_str(n)
 	 })
 	 window.addEventListener("load", () => number.focus())
 
