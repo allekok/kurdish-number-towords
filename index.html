@@ -25,10 +25,12 @@
 			 font-family:inherit;
 			 font-size:1.5em;
 			 -webkit-appearance:none;
+			 background:inherit;
 			 border:0;
 			 border-bottom:2px solid;
 			 border-top:2px solid;
 			 border-radius:0;
+			 color:inherit;
 			 padding:.5em 1em;
 			 width:100%;
 			 display:block;
@@ -46,6 +48,19 @@
 		 footer {
 			 padding:1em 0;
 			 font-size:1.05em;
+		 }
+
+		 @media (prefers-color-scheme: dark) {
+			 body {
+				 background:#000;
+				 color:#FFF;
+			 }
+			 a {
+				 color:#FFF;
+			 }
+			 input:focus {
+				 border-color:#FA0;
+			 }
 		 }
 		</style>
 	</head>
